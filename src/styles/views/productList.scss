@@ -1,0 +1,40 @@
+.app__product_list {
+}
+
+.app__product_list-title {
+  margin: 20px;
+}
+
+.app__product_list-filter_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app__product_list-filter {
+  margin: 20px;
+
+  @media only screen and (max-width: 600px) {
+    width: 0 20px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.app__product_list-filter_text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 20px;
+
+  @media only screen and (max-width: 600px) {
+    margin-right: 0px;
+  }
+}
+
+.app__product_list-select {
+  padding: 10px;
+  margin-right: 20px;
+
+  @media only screen and (max-width: 600px) {
+    margin: 10px 0px;
+  }
+}

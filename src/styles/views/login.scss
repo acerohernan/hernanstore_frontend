@@ -1,0 +1,64 @@
+.app__login {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+      center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app__login-wrapper {
+  width: 75%;
+  padding: 20px;
+  background-color: white;
+
+  @media only screen and (min-width: 800px) {
+    width: 25%;
+    min-width: 400px;
+  }
+}
+
+.app__login-title {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.app__login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__login-input {
+  flex: 1;
+  min-width: 40%;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.app__login-button {
+  width: 40%;
+  border: none;
+  padding: 15px 20px;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.app__login-link {
+  margin: 5px 0px;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.app__login-label_error {
+  color: red;
+  font-size: 14px;
+}

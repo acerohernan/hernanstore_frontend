@@ -1,0 +1,61 @@
+.app__signup {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+      center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app__signup-wrapper {
+  max-width: 550px;
+  width: 40%;
+  padding: 20px;
+  background-color: white;
+
+  @media only screen and (max-width: 800px) {
+    width: 75%;
+  }
+}
+
+.app__signup-title {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.app__signup-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.app__signup-input {
+  flex: 1;
+  min-width: 80%;
+  margin: 20px 10px 0px 0px;
+  padding: 10px;
+}
+
+.app__signup-agreement {
+  font-size: 12px;
+  margin: 20px 0px;
+}
+
+.app__signup-button {
+  width: 40%;
+  border: none;
+  padding: 15px 20px;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+}
+
+.app__signup-label_error {
+  color: red;
+  font-size: 14px;
+}

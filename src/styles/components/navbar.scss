@@ -1,0 +1,87 @@
+.app__navbar {
+  height: 60px;
+  @media only screen and (max-width: 700px) {
+    height: 50px;
+  }
+}
+
+.app__navbar-wrapper {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 700px) {
+    padding: 10px 0px;
+  }
+}
+.app__navbar-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.app__navbar-language {
+  font-size: 14px;
+  cursor: pointer;
+  @media only screen and (max-width: 700px) {
+    display: none;
+  }
+}
+
+.app__navbar-search {
+  border: 0.5px solid lightgray;
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  padding: 5px;
+}
+.app__navbar-input {
+  border: none;
+
+  @media only screen and (max-width: 700px) {
+    width: 50px;
+  }
+}
+
+.app__navbar-center {
+  flex: 1;
+  text-align: center;
+}
+
+.app__navbar-logo {
+  font-weight: bold;
+
+  @media only screen and (max-width: 700px) {
+    font-size: 24px;
+  }
+}
+.app__navbar-rigth {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media only screen and (max-width: 700px) {
+    flex: 2;
+    justify-content: center;
+  }
+}
+.app__navbar-menu_item {
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 25px;
+  text-decoration: none;
+  border-bottom: 1px solid white;
+  transition: 0.3s all ease-in-out;
+  color: black;
+
+  &:hover {
+    border-color: black;
+  }
+
+  @media only screen and (max-width: 700px) {
+    font-size: 12px;
+    margin-left: 10px;
+  }
+}
