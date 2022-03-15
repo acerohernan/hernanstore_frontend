@@ -22,18 +22,38 @@ function Footer() {
           humour, or randomised words which don’t look even slightly believable.
         </p>
         <div className="app__footer-social">
-          <div className="app__footer-social_icon">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noreferrer"
+            className="app__footer-social_icon"
+          >
             <Facebook />
-          </div>
-          <div className="app__footer-social_icon">
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noreferrer"
+            className="app__footer-social_icon"
+          >
             <Instagram />
-          </div>
-          <div className="app__footer-social_icon">
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer"
+            className="app__footer-social_icon"
+          >
             <Twitter />
-          </div>
-          <div className="app__footer-social_icon">
+          </a>
+          <a
+            href="https://pinterest.com"
+            target="_blank"
+            rel="noreferrer"
+            className="app__footer-social_icon"
+          >
             <Pinterest />
-          </div>
+          </a>
         </div>
       </div>
       <div className="app__footer-center">
@@ -68,14 +88,15 @@ function Footer() {
       <div className="app__footer-right">
         <h1 className="app__footer-titile">Contact</h1>
         <div className="app__footer-contact_item">
-          <Room style={{ marginRight: "10px" }} /> 622 Dixie Path , South
-          Tobinchester 98336
+          <Room style={{ marginRight: "10px" }} /> Calle Beta C-39, San Borja,
+          Lima, Perú
         </div>
         <div className="app__footer-contact_item">
-          <Phone style={{ marginRight: "10px" }} /> +1 234 56 78
+          <Phone style={{ marginRight: "10px" }} /> +51 999113934
         </div>
         <div className="app__footer-contact_item">
-          <MailOutline style={{ marginRight: "10px" }} /> contact@lama.dev
+          <MailOutline style={{ marginRight: "10px" }} />{" "}
+          contacto.acero.hernan@gmail.com
         </div>
         <img
           className="app__footer-payment_img"

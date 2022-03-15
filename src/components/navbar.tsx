@@ -23,14 +23,14 @@ function Navbar() {
       <div className="app__navbar-wrapper">
         <div className="app__navbar-left">
           <span className="app__navbar-language">EN</span>
-          <div className="app__navbar-search">
+          {/* <div className="app__navbar-search">
             <input
               type="text"
               className="app__navbar-input"
               placeholder="Search"
             />
             <Search style={{ color: "gray", fontSize: 16 }} />
-          </div>
+          </div> */}
         </div>
         <div className="app__navbar-center">
           <Link to="/">
@@ -51,7 +51,12 @@ function Navbar() {
 
           {isLogin && (
             <>
-              <span className="app__navbar-menu_item">Hi, {username}</span>
+              <span
+                className="app__navbar-menu_item"
+                style={{ border: "none", cursor: "default", fontSize: "15px" }}
+              >
+                Hi, {username}
+              </span>
               <button className="app__navbar-menu_item" onClick={handleLogout}>
                 <LogoutIcon />
               </button>

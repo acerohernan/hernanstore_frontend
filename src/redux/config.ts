@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-export const BASE_URL =
-  process.env.REACT_APP_BASE_URL || "https://store-dashboard-api.herokuapp.com";
+export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const fetchData = (token: string = "") => {
   const defaultOptions = {

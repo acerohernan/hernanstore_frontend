@@ -18,6 +18,11 @@ function ProductListScreen() {
   const { items, status } = useAppSelector((state) => state.product);
 
   const [filteredProducts, setFilteredProducts] = useState(items);
+  const [filters, setFilters] = useState({
+    color: "",
+    size: "",
+    price: "",
+  });
 
   const dispatch = useAppDispatch();
 
@@ -35,67 +40,47 @@ function ProductListScreen() {
   const colorSelectRef: RefObject<any> = useRef(null);
   const sizeSelectRef: RefObject<any> = useRef(null);
 
-  const handleFilterByColor: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    let value = e.currentTarget.value.toLocaleLowerCase();
-    sizeSelectRef.current.value = "All Size";
-
-    if (value !== "all color") {
-      const newItems = items.filter((item) =>
-        item.color.join().includes(value)
-      );
-
-      return setFilteredProducts(newItems);
-    }
-
-    if (value === "all color") {
-      setFilteredProducts(items);
-    }
-  };
-
-  const handleFilterBySize: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    let value = e.currentTarget.value;
-    colorSelectRef.current.value = "All Color";
-
-    if (value !== "All Size") {
-      const newItems = items.filter((item) => item.size.join().includes(value));
-
-      return setFilteredProducts(newItems);
-    }
-
-    if (value === "All Size") {
-      setFilteredProducts(items);
-    }
-  };
-
-  const handleSortByPrice: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    let value = e.currentTarget.value;
-    colorSelectRef.current.value = "All Color";
-    sizeSelectRef.current.value = "All Size";
-
-    /* if (value === "Price (asc)") {
-      const newItems = items.sort((a, b) => {
-        if (Number(a.price) > Number(b.price)) {
-          return 1;
-        }
-
-        if (Number(b.price) > Number(a.price)) {
-          return -1;
-        }
-
-        return 0;
+  const handleSelectFilter: ChangeEventHandler<HTMLSelectElement> = (e) => {
+    if (!e.currentTarget.value.includes("All")) {
+      setFilters({
+        ...filters,
+        [e.currentTarget.name]: e.currentTarget.value,
       });
-      return console.log(newItems);
     }
 
-    if (value === "Price (desc)") {
-      const newItems = items.sort((a, b) => Number(b.price) - Number(a.price));
-      return console.log(newItems);
+    if (e.currentTarget.value.includes("All")) {
+      setFilters({
+        ...filters,
+        [e.currentTarget.name]: "",
+      });
     }
-
-    if (value === "Random") {
-      setFilteredProducts(items);
-    } */
   };
+
+  useEffect(() => {
+    let newProducts = [...items];
+
+    if (filters.color) {
+      newProducts = newProducts.filter((product) =>
+        product.color.join().includes(filters.color.toLocaleLowerCase())
+      );
+    }
+
+    if (filters.size) {
+      newProducts = newProducts.filter((product) =>
+        product.size.join().includes(filters.size)
+      );
+    }
+
+    if (filters.price === "Price (asc)") {
+      newProducts.sort((a, b) => (Number(a.price) > Number(b.price) ? 1 : -1));
+    }
+
+    if (filters.price === "Price (desc)") {
+      newProducts.sort((a, b) => (Number(a.price) < Number(b.price) ? 1 : -1));
+    }
+
+    setFilteredProducts(newProducts);
+  }, [filters, items]);
 
   return (
     <div className="app__product_list">
@@ -109,7 +94,8 @@ function ProductListScreen() {
           </span>
           <select
             className="app__product_list-filter_select"
-            onChange={handleFilterByColor}
+            onChange={handleSelectFilter}
+            name="color"
             defaultValue="All Color"
             ref={colorSelectRef}
           >
@@ -123,7 +109,8 @@ function ProductListScreen() {
           <select
             className="app__product_list-filter_select"
             defaultValue="All Size"
-            onChange={handleFilterBySize}
+            name="size"
+            onChange={handleSelectFilter}
             ref={sizeSelectRef}
           >
             <option>All Size</option>
@@ -139,14 +126,41 @@ function ProductListScreen() {
           <select
             className="app__product_list-filter_select"
             defaultValue="Newest"
-            onChange={handleSortByPrice}
+            name="price"
+            onChange={handleSelectFilter}
           >
-            <option>Random</option>
+            handleSelectFilter
+            <option value="All price">Random</option>
             <option>Price (asc)</option>
             <option>Price (desc)</option>
           </select>
         </div>
       </div>
+      {filteredProducts.length === 0 &&
+      (filters.size || filters.color || filters.price) ? (
+        <div className="app__product_list-no_products">
+          <img
+            src="https://cdn.dribbble.com/users/992274/screenshots/7392790/media/95483df50a0a3324c4cf9ccb1094b825.jpg"
+            alt="no-products"
+            className="app__product_list-no_products-img"
+          />
+          <p className="app__product_list-no_products-text">
+            Oh! Seems that the product that your search does not exists.
+          </p>
+          <button
+            className="app__product_list-top_button"
+            onClick={() =>
+              setFilters({
+                color: "",
+                size: "",
+                price: filters.price,
+              })
+            }
+          >
+            DELETE FILTERS
+          </button>
+        </div>
+      ) : null}
       <Products products={filteredProducts} />
       <Newsletter />
       <Footer />
