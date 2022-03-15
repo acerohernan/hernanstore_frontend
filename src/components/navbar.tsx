@@ -1,13 +1,22 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { Badge } from "@material-ui/core";
 
 import "../styles/components/navbar.scss";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { userLogout } from "../redux/reducers/user";
 
 function Navbar() {
   const { items } = useAppSelector((state) => state.cart);
+  const { isLogin, username } = useAppSelector((state) => state.user);
+
+  const dispatch = useAppDispatch();
+
+  const handleLogout: MouseEventHandler = () => {
+    dispatch(userLogout());
+  };
 
   return (
     <div className="app__navbar">
@@ -29,12 +38,25 @@ function Navbar() {
           </Link>
         </div>
         <div className="app__navbar-rigth">
-          <Link className="app__navbar-menu_item" to="/signup">
-            SIGN UP
-          </Link>
-          <Link className="app__navbar-menu_item" to="/login">
-            LOGIN
-          </Link>
+          {!isLogin && (
+            <>
+              <Link className="app__navbar-menu_item" to="/signup">
+                SIGN UP
+              </Link>
+              <Link className="app__navbar-menu_item" to="/login">
+                LOGIN
+              </Link>
+            </>
+          )}
+
+          {isLogin && (
+            <>
+              <span className="app__navbar-menu_item">Hi, {username}</span>
+              <button className="app__navbar-menu_item" onClick={handleLogout}>
+                <LogoutIcon />
+              </button>
+            </>
+          )}
           <Link className="app__navbar-menu_item" to="/cart">
             <Badge badgeContent={items.length} color="primary">
               <ShoppingCartOutlined />

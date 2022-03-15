@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import { SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -53,8 +53,12 @@ const Product = ({
   );
 };
 
-function Products() {
-  const { status, items } = useAppSelector((state) => state.product);
+interface ProductsProps {
+  products: IProduct[];
+}
+
+function Products({ products }: ProductsProps) {
+  const { status } = useAppSelector((state) => state.product);
 
   if (status === "getProducts_loading") {
     return <></>;
@@ -69,7 +73,7 @@ function Products() {
         justifyContent: "space-between",
       }}
     >
-      {items.map((item) => (
+      {products.map((item) => (
         <Product key={item._id} {...item} />
       ))}
     </div>

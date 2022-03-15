@@ -117,3 +117,41 @@
     background-color: #f8f4f4;
   }
 }
+
+.app__product_screen-no_products {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 80px;
+}
+
+.app__product_screen-no_products-img {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+}
+
+.app__product_screen-no_products-text {
+  text-align: center;
+  max-width: 700px;
+  margin: 20px 0 30px;
+  font-size: 1.1rem;
+
+  @media only screen and (min-width: 850px) {
+    font-size: 1.3rem;
+  }
+}
+
+.app__product_screen-top_button {
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.3s all ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

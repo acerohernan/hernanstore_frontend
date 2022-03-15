@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { Navigate, useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { userLogin, userSignup } from "../redux/reducers/user";
 import "../styles/views/signup.scss";
 import { emailRegex, passwordRexeg } from "../utils/regex";
 
@@ -14,6 +17,10 @@ interface FormValues {
 }
 
 function SignUpScreen() {
+  const [isSubmitted, setIsSubmitted] = useState(true);
+
+  const { status } = useAppSelector((state) => state.user);
+
   const {
     register,
     handleSubmit,
@@ -21,11 +28,27 @@ function SignUpScreen() {
     formState: { errors },
   } = useForm<FormValues>();
 
+  const new_password_value = watch("new_password");
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
+    const { username, email, new_password: password } = data;
+    dispatch(
+      userSignup({
+        username,
+        email,
+        password,
+      })
+    );
+    setIsSubmitted(true);
   };
 
-  const new_password_value = watch("new_password");
+  useEffect(() => {
+    if (status === "userSignup_success" && isSubmitted) {
+      navigate("/login");
+    }
+  }, [isSubmitted, status]);
 
   return (
     <div style={{ overflowX: "hidden" }}>
@@ -129,6 +152,12 @@ function SignUpScreen() {
               By creating an account, I consent to the processing of my personal
               data in accordance with the <b>PRIVACY POLICY</b>
             </span>
+            {status === "userSignup_rejected" && (
+              <span className="app__signup-label_error">
+                Something was wrong... Please verify the informaction and try
+                again.
+              </span>
+            )}
             <button className="app__signup-button">CREATE</button>
           </form>
         </div>

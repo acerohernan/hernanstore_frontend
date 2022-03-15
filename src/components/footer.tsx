@@ -9,6 +9,7 @@ import {
   Twitter,
 } from "@material-ui/icons";
 import "../styles/components/footer.scss";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -38,16 +39,30 @@ function Footer() {
       <div className="app__footer-center">
         <h1 className="app__footer-title">Useful Links</h1>
         <ul className="app__footer-list">
-          <li className="app__footer-list_item">Home</li>
-          <li className="app__footer-list_item">Cart</li>
-          <li className="app__footer-list_item">Man Fashion</li>
-          <li className="app__footer-list_item">Woman Fashion</li>
-          <li className="app__footer-list_item">Accessories</li>
-          <li className="app__footer-list_item">My Account</li>
-          <li className="app__footer-list_item">Order Tracking</li>
-          <li className="app__footer-list_item">Wishlist</li>
-          <li className="app__footer-list_item">Terms</li>
-          <li className="app__footer-list_item">Wishlist</li>
+          <Link className="app__footer-list_item" to="/">
+            Home
+          </Link>
+          <Link className="app__footer-list_item" to="/cart">
+            Cart
+          </Link>
+          <Link className="app__footer-list_item" to="/products">
+            Man Fashion
+          </Link>
+          <Link className="app__footer-list_item" to="/products">
+            Woman Fashion
+          </Link>
+          <Link className="app__footer-list_item" to="/products">
+            Accessories
+          </Link>
+          <Link className="app__footer-list_item" to="/products">
+            Hats
+          </Link>
+          <Link className="app__footer-list_item" to="/cart">
+            Wishlist
+          </Link>
+          <Link className="app__footer-list_item" to="/products">
+            Terms
+          </Link>
         </ul>
       </div>
       <div className="app__footer-right">

@@ -53,6 +53,11 @@
 .app__footer-list_item {
   width: 50%;
   margin-bottom: 10px;
+  transition: 0.3s all ease-in-out;
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 .app__footer-right {

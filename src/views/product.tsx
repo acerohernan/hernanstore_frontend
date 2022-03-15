@@ -15,6 +15,7 @@ import "../styles/views/product.scss";
 function ProductScreen() {
   const [product, setProduct] = useState<IProduct>();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -23,11 +24,21 @@ function ProductScreen() {
   const isInCart = items.find((item) => item._id === product?._id);
 
   const getProduct = async () => {
-    setLoading(true);
-    const response = await fetch(`${BASE_URL}/api/products/find/${id}`);
-    const product = await response.json();
-    setProduct(product);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const response = await fetch(`${BASE_URL}/api/products/find/${id}`);
+      const product = await response.json();
+
+      if (product.path) {
+        setLoading(false);
+        return setError(true);
+      }
+
+      setProduct(product);
+      setLoading(false);
+    } catch (e) {
+      setError(true);
+    }
   };
 
   const handleAddToCart: MouseEventHandler = () => {
@@ -52,6 +63,33 @@ function ProductScreen() {
       <div className="app__product_screen">
         <Navbar />
         <Announcement />
+        <Newsletter />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="app__product_screen">
+        <Navbar />
+        <Announcement />
+        <div className="app__product_screen-no_products">
+          <img
+            src="https://cdn.dribbble.com/users/992274/screenshots/7392790/media/95483df50a0a3324c4cf9ccb1094b825.jpg"
+            alt="no-products"
+            className="app__product_screen-no_products-img"
+          />
+          <p className="app__product_screen-no_products-text">
+            Oh! Seems that the product that your search does not exists.
+          </p>
+          <button
+            className="app__product_screen-top_button"
+            onClick={() => navigate("/products")}
+          >
+            SEE PRODUCTS
+          </button>
+        </div>
         <Newsletter />
         <Footer />
       </div>

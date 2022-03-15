@@ -7,6 +7,7 @@ import LoginScreen from "../views/login";
 import ProductScreen from "../views/product";
 import ProductListScreen from "../views/productList";
 import SignUpScreen from "../views/signup";
+import { VerifyAuth } from "./auth";
 
 const RouterStore: React.FC = (): JSX.Element => {
   const rtg = useRoutes([
@@ -16,11 +17,11 @@ const RouterStore: React.FC = (): JSX.Element => {
     },
     {
       path: "login",
-      element: <LoginScreen />,
+      element: VerifyAuth(<LoginScreen />),
     },
     {
       path: "signup",
-      element: <SignUpScreen />,
+      element: VerifyAuth(<SignUpScreen />),
     },
     {
       path: "cart",
