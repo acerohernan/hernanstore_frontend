@@ -1,46 +1,84 @@
-# Getting Started with Create React App
+<div id="top"></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h3 align="center">Hernan Store</h3>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  <p align="center">
+  Store app repository.
+    <br />
+    <br />
+    <a href="https://store-react-ts.herokuapp.com/">View demo</a>
+    ·
+    <a href="https://api.whatsapp.com/send?phone=51999113934&text=Hola%20Hernan!%20%F0%9F%98%83">Whastapp</a>
+    ·
+    <a href="mailto:contacto.acero.hernan@gmail.com">Email</a>
+  </p>
+</div>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- ABOUT THE PROJECT -->
+## About
+Hernan Store is an ecommerce built on React and Typescript. The Backend part was built with NodeJS, ExpressJS and MongoDB was used for the database. The styles were added with SASS using the SASS Modules methodology. To handle the state of the application, Redux and Redux Thunk were used for asynchronous API calls.
 
-### `npm run eject`
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Built With
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* <p>ReactJS</p>
+* <p>Typescript</p>
+* <p>Expo</p>
+* <p>Redux</p>
+* <p>NodeJS</p>
+* <p>ExpressJS</p>
+* <p>MongoDB</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- LICENSE -->
+## License
 
-## Learn More
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+<!-- CONTACT -->
+## Contact
+
+Hernan Acero - [Whastapp](https://api.whatsapp.com/send?phone=51999113934&text=Hola%20Hernan!%20%F0%9F%98%83) - contacto.acero.hernan@gmail.com
+
+Project Link: [https://acerohernan.github.io/portfolio_react_ts/](https://acerohernan.github.io/portfolio_react_ts/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/hernan-acero/
+[product-screenshot]: images/screenshot.png
