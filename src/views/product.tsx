@@ -1,11 +1,10 @@
 import { Add, Remove } from "@material-ui/icons";
-import React, { MouseEventHandler, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { MouseEventHandler, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Announcement from "../components/announcement";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import Newsletter from "../components/newsletter";
-import { BASE_URL } from "../redux/config";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { IProduct } from "../redux/models/product";
 import { addToCart, removeFromCart } from "../redux/reducers/cart";
@@ -13,7 +12,7 @@ import { addToCart, removeFromCart } from "../redux/reducers/cart";
 import "../styles/views/product.scss";
 
 function ProductScreen() {
-  const [product, setProduct] = useState<IProduct>();
+  const [product, setProduct] = useState<IProduct | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -21,20 +20,24 @@ function ProductScreen() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { items } = useAppSelector((state) => state.cart);
+  const { items: products } = useAppSelector((state) => state.product);
   const isInCart = items.find((item) => item._id === product?._id);
 
   const getProduct = async () => {
+    setError(true);
+    let error = true;
+    if (error) return;
     try {
       setLoading(true);
-      const response = await fetch(`${BASE_URL}/api/products/find/${id}`);
-      const product = await response.json();
+      const product = products.find((prod) => prod._id === id);
 
-      if (product.path) {
+      if (!product) {
+        setError(true);
         setLoading(false);
-        return setError(true);
+        return;
       }
 
-      setProduct(product);
+      //setProduct(product);
       setLoading(false);
     } catch (e) {
       setError(true);
@@ -69,7 +72,7 @@ function ProductScreen() {
     );
   }
 
-  if (error) {
+  if (error || !product) {
     return (
       <div className="app__product_screen">
         <Navbar />

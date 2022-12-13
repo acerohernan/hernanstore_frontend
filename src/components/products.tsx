@@ -1,11 +1,11 @@
-import React, { MouseEventHandler, useState } from "react";
 import { SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
+import { MouseEventHandler } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import "../styles/components/products.scss";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { IProduct } from "../redux/models/product";
 import { addToCart } from "../redux/reducers/cart";
+import "../styles/components/products.scss";
 
 const Product = ({
   _id,
@@ -42,7 +42,7 @@ const Product = ({
       <div className="app__product-circle" />
       <img src={img} alt="product-img" className="app__product-img" />
       <div className="app__product-info">
-        <button className="app__product-icon" onClick={handleAddToCart}>
+        <button className="app__product-icon" onClick={() => {}}>
           <ShoppingCartOutlined />
         </button>
         <Link className="app__product-icon" to={`/products/${_id}`}>
