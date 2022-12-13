@@ -52,7 +52,7 @@ function CartScreen() {
             {/* <span className="app__cart-top_text">Your Wishlist (0)</span> */}
           </div>
           {items.length >= 1 ? (
-            <StripeCheckout
+            {/* <StripeCheckout
               name="Hernan Store"
               image="https://icon-library.com/images/shop-icon-png/shop-icon-png-6.jpg"
               billingAddress
@@ -63,7 +63,8 @@ function CartScreen() {
               stripeKey={KEY}
             >
               <button className="app__cart-top_button">CHECKOUT NOW</button>
-            </StripeCheckout>
+            </StripeCheckout> */}
+            
           ) : (
             <button
               className="app__cart-top_button"
@@ -184,20 +185,11 @@ function CartScreen() {
                   $ {subtotal}
                 </span>
               </div>
-              <StripeCheckout
-                name="Hernan Store"
-                image="https://icon-library.com/images/shop-icon-png/shop-icon-png-6.jpg"
-                billingAddress
-                shippingAddress
-                description={`Your total is $${subtotal}`}
-                amount={subtotal * 100}
-                token={onToken}
-                stripeKey={KEY}
-              >
+             
                 <button className="app__cart-summary_button">
                   CHECKOUT NOW
                 </button>
-              </StripeCheckout>
+              
             </div>
           )}
         </div>

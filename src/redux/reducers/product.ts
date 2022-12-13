@@ -11,9 +11,17 @@ const initialState: ProductState = {
 export const getProducts = createAsyncThunk<any, void>(
   "product/get",
   async () => {
-    const response = await fetchData().get("/api/products");
-    const dataResponse = (await response).data;
-    return dataResponse;
+    return [
+      {
+      _id: "cfa5d55b-de50-4e08-b3c1-24d44a3415ab",
+      name: "Casaca de cuero",
+      code: "010101",
+      category: "Casacas",
+      price: 30,
+      stars: 30,
+      description: "Esta es una descripción test",
+      image_url: "https://lavanderia-peru.com/wp-content/uploads/2021/03/mantenimiento-de-cuero-lavanderia-el-solar.jpg"}
+    ];
   }
 );
 

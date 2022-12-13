@@ -10,11 +10,9 @@ import RouterStore from "./router";
 function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <RouterStore />
         </BrowserRouter>
-      </PersistGate>
     </Provider>
   );
 }
